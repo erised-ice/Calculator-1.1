@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculator 1.0</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/screen.css">
+</head>
+<body> 
+  <div class="main">
+    <input type="text" id="first-num" class="display display--number">
+    <input type="text" id="second-num" class="display display--number">
+    <div class="buttons">
+      <button class="button" onclick="addition()">+</button>
+      <button class="button" onclick="subtraction()">-</button>
+      <button class="button" onclick="multiplication()">&times;</button>
+      <button class="button" onclick="devision()">&divide;</button>
+      <button class="button" onclick="deletion()">c</button>
+    </div>
+    <p class="result">Результат:
+      <input class="display display--result" type="text" id="display-result" disabled>
+    </p>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
