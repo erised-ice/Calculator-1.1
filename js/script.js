@@ -1,7 +1,12 @@
-var numberOne, numberTwo;
+var numberOne = null;
+var numberTwo = null;
 
-function getNumber(id) {
-    return +document.getElementById(id).value;
+function getInputValue(id) {
+    return document.getElementById(id).value;
+}
+
+function stringToNumber(string) {
+    return string = +string;
 }
 
 function output(result) {
@@ -9,29 +14,41 @@ function output(result) {
 }
 
 function addition() {
-    numberOne = getNumber('first-num');
-    numberTwo = getNumber('second-num');
+    var inputValueOne = getInputValue('first-num');
+    var inputValueTwo = getInputValue('second-num');
+
+    numberOne = stringToNumber(inputValueOne);
+    numberTwo = stringToNumber(inputValueTwo);
 
     output(numberOne + numberTwo);
 }
 
 function subtraction() {
-    numberOne = getNumber('first-num');
-    numberTwo = getNumber('second-num');
+    var inputValueOne = getInputValue('first-num');
+    var inputValueTwo = getInputValue('second-num');
+
+    numberOne = stringToNumber(inputValueOne);
+    numberTwo = stringToNumber(inputValueTwo);
 
     output(numberOne - numberTwo);
 }
 
 function multiplication() {
-    numberOne = getNumber('first-num');
-    numberTwo = getNumber('second-num');
+    var inputValueOne = getInputValue('first-num');
+    var inputValueTwo = getInputValue('second-num');
+
+    numberOne = stringToNumber(inputValueOne);
+    numberTwo = stringToNumber(inputValueTwo);
 
     output(numberOne * numberTwo);
 }
 
 function devision() {
-    numberOne = getNumber('first-num');
-    numberTwo = getNumber('second-num');
+    var inputValueOne = getInputValue('first-num');
+    var inputValueTwo = getInputValue('second-num');
+
+    numberOne = stringToNumber(inputValueOne);
+    numberTwo = stringToNumber(inputValueTwo);
 
     output(numberOne / numberTwo);
 }
