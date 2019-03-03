@@ -1,76 +1,98 @@
 // New
 const $buttonCollection = document.querySelectorAll('.js-button');
-console.log($buttonCollection);
 
 const $buttonAdd = document.querySelector('.js-button-add');
-const $buttonAdd = document.querySelector('.js-button-subtract');
-const $buttonAdd = document.querySelector('.js-button-multiply');
-const $buttonAdd = document.querySelector('.js-button-devide');
+const $buttonSubtract = document.querySelector('.js-button-subtract');
+const $buttonMultiply = document.querySelector('.js-button-multiply');
+const $buttonDeviser = document.querySelector('.js-button-deviser');
 
-const $buttonAdd = document.querySelector('.js-button-delete');
+const $buttonDelete = document.querySelector('.js-button-delete');
 
 const $outputDisplay = document.querySelector('.js-output');
-console.log($outputDisplay);
+
+var numberOne = null;
+var numberTwo = null;
 
 function getInputValue(id) {
   return document.getElementById(id).value;
 }
 
-// Old
-
-var numberOne = null;
-var numberTwo = null;
-
-function stringToNumber(string) {
-    return string = +string;
-}
 
 function output(result) {
-    $outputDisplay.value = result;
+  $outputDisplay.value = result;
 }
 
-function addition() {
-    var inputValueOne = getInputValue('first-num');
-    var inputValueTwo = getInputValue('second-num');
-
-    numberOne = stringToNumber(inputValueOne);
-    numberTwo = stringToNumber(inputValueTwo);
-
-    output(numberOne + numberTwo);
+function stringToNumber(string) {
+  return string = +string;
 }
 
-function subtraction() {
-    var inputValueOne = getInputValue('first-num');
-    var inputValueTwo = getInputValue('second-num');
-
-    numberOne = stringToNumber(inputValueOne);
-    numberTwo = stringToNumber(inputValueTwo);
-
-    output(numberOne - numberTwo);
+function addition(numberOne,numberTwo) {
+  return numberOne + numberTwo;
 }
 
-function multiplication() {
-    var inputValueOne = getInputValue('first-num');
-    var inputValueTwo = getInputValue('second-num');
-
-    numberOne = stringToNumber(inputValueOne);
-    numberTwo = stringToNumber(inputValueTwo);
-
-    output(numberOne * numberTwo);
+function subtraction(numberOne,numberTwo) {
+  return numberOne - numberTwo;
 }
 
-function devision() {
-    var inputValueOne = getInputValue('first-num');
-    var inputValueTwo = getInputValue('second-num');
+function multiply(numberOne,numberTwo) {
+  return numberOne * numberTwo;
+}
 
-    numberOne = stringToNumber(inputValueOne);
-    numberTwo = stringToNumber(inputValueTwo);
-
-    output(numberOne / numberTwo);
+function devision(numberOne,numberTwo) {
+  return numberOne / numberTwo;
 }
 
 function deletion() {
-    document.getElementById('first-num').value = '';
-    document.getElementById('second-num').value = '';
-    output('');
+  document.getElementById('first-num').value = '';
+  document.getElementById('second-num').value = '';
 }
+
+$buttonAdd.addEventListener('click', function (event) {
+  event.preventDefault();
+  var inputValueOne = getInputValue('first-num');
+  var inputValueTwo = getInputValue('second-num');
+
+  numberOne = stringToNumber(inputValueOne);
+  numberTwo = stringToNumber(inputValueTwo);
+
+  output(addition(numberOne,numberTwo));
+});
+
+$buttonSubtract.addEventListener('click', function (event) {
+  event.preventDefault();
+  var inputValueOne = getInputValue('first-num');
+  var inputValueTwo = getInputValue('second-num');
+
+  numberOne = stringToNumber(inputValueOne);
+  numberTwo = stringToNumber(inputValueTwo);
+
+  output(subtraction(numberOne,numberTwo));
+});
+
+$buttonMultiply.addEventListener('click', function (event) {
+  event.preventDefault();
+  var inputValueOne = getInputValue('first-num');
+  var inputValueTwo = getInputValue('second-num');
+
+  numberOne = stringToNumber(inputValueOne);
+  numberTwo = stringToNumber(inputValueTwo);
+
+  output(multiply(numberOne,numberTwo));
+});
+
+$buttonDeviser.addEventListener('click', function (event) {
+  event.preventDefault();
+  var inputValueOne = getInputValue('first-num');
+  var inputValueTwo = getInputValue('second-num');
+
+  numberOne = stringToNumber(inputValueOne);
+  numberTwo = stringToNumber(inputValueTwo);
+
+  output(devision(numberOne,numberTwo));
+});
+
+$buttonDelete.addEventListener('click', function (event) {
+  event.preventDefault();
+  deletion();
+  output('');
+})
