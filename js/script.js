@@ -1,25 +1,4 @@
-const $buttonAdd = document.querySelector('.js-button-add');
-const $buttonSubtract = document.querySelector('.js-button-subtract');
-const $buttonMultiply = document.querySelector('.js-button-multiply');
-const $buttonDeviser = document.querySelector('.js-button-deviser');
-const $buttonDelete = document.querySelector('.js-button-delete');
-const $outputDisplay = document.querySelector('.js-output');
-
-var numberOne = null;
-var numberTwo = null;
-
-function getInputValue(id) {
-  return document.getElementById(id).value;
-}
-
-function output(result) {
-  $outputDisplay.value = result;
-}
-
-function stringToNumber(string) {
-  return +string;
-}
-
+// Сперва главные функции калькулятора
 function addition(numberOne, numberTwo) {
   return numberOne + numberTwo;
 }
@@ -28,108 +7,63 @@ function subtraction(numberOne,numberTwo) {
   return numberOne - numberTwo;
 }
 
-function multiply(numberOne,numberTwo) {
+function multiplication(numberOne,numberTwo) {
   return numberOne * numberTwo;
 }
 
-function devision(numberOne,numberTwo) {
+function division(numberOne,numberTwo) {
   return numberOne / numberTwo;
 }
 
-function deletion() {
+function reset() {
   document.getElementById('first-num').value = '';
   document.getElementById('second-num').value = '';
 }
 
-/*function getNumber(elementsIdCollection) {
-    const numbersCollection = [];
+function output(result) {
+  $outputDisplay.value = result;
+}
+// Затем вспомогательные функции
+function getInputValue(id) {
+  return document.getElementById(id).value;
+}
 
-    elementsIdCollection.forEach(function (item) {
-        const number = getInputValue(item);
-
-        numbersCollection.push(
-            stringToNumber(number)
-        );
-    });
-
-  return numbersCollection;
-}*/
-
-/*$buttonAdd.addEventListener('click', function (event) {
-  /!*event.preventDefault();
-  var inputValueOne = getInputValue('first-num');
-  var inputValueTwo = getInputValue('second-num');
-
-  numberOne = stringToNumber(inputValueOne);
-  numberTwo = stringToNumber(inputValueTwo);
-
-  output(addition(numberOne,numberTwo));*!/
-
-  const numbersCollection = getNumber(['first-num', 'second-num']);
-
-  output(
-      addition(numbersCollection[0], numbersCollection[1])
-  )
-});*/
-
-/*$buttonSubtract.addEventListener('click', function (event) {
-  event.preventDefault();
-  var inputValueOne = getInputValue('first-num');
-  var inputValueTwo = getInputValue('second-num');
-
-  numberOne = stringToNumber(inputValueOne);
-  numberTwo = stringToNumber(inputValueTwo);
-
-  output(subtraction(numberOne,numberTwo));
-});*/
-
-$buttonMultiply.addEventListener('click', function (event) {
-  event.preventDefault();
-  var inputValueOne = getInputValue('first-num');
-  var inputValueTwo = getInputValue('second-num');
-
-  numberOne = stringToNumber(inputValueOne);
-  numberTwo = stringToNumber(inputValueTwo);
-
-  output(multiply(numberOne,numberTwo));
-});
-
-$buttonDeviser.addEventListener('click', function (event) {
-  event.preventDefault();
-  var inputValueOne = getInputValue('first-num');
-  var inputValueTwo = getInputValue('second-num');
-
-  numberOne = stringToNumber(inputValueOne);
-  numberTwo = stringToNumber(inputValueTwo);
-
-  output(devision(numberOne,numberTwo));
-});
-
-$buttonDelete.addEventListener('click', function (event) {
-  event.preventDefault();
-  deletion();
-  output('');
-});
-
-// New
+function stringToNumber(string) {
+  return +string;
+}
+// Затем что делать с кнопками и полями ввода
+const $outputDisplay = document.querySelector('.js-output');
 const $buttonCollection = document.querySelectorAll('.js-button');
 
 $buttonCollection.forEach(function (button) {
-    button.addEventListener('click', function (event) {
-      const buttonValue = button.value;
-      var inputValueOne = getInputValue('first-num');
-      var inputValueTwo = getInputValue('second-num');
+  button.addEventListener('click', function () {
+    const buttonValue = button.value;
+    var inputValueOne = getInputValue('first-num');
+    var inputValueTwo = getInputValue('second-num');
 
-      numberOne = stringToNumber(inputValueOne);
-      numberTwo = stringToNumber(inputValueTwo);
+    let numberOne = stringToNumber(inputValueOne);
+    let numberTwo = stringToNumber(inputValueTwo);
 
-      switch (buttonValue) {
-        case 'addition':2
-            output(addition(numberOne, numberTwo));
-            break;
-        case 'subtraction':
-            output(subtraction(numberOne, numberTwo));
-            break;
-      }
-    });
+    let result = null;
+
+    switch (buttonValue) {
+      case 'addition':
+        result = addition(numberOne, numberTwo);
+        break;
+      case 'subtraction':
+        result = subtraction(numberOne, numberTwo);
+        break;
+      case 'multiply':
+        result = multiplication(numberOne, numberTwo);
+        break;
+      case 'division':
+        result = division(numberOne, numberTwo);
+        break;
+      case 'reset':
+        result = '';
+        reset();
+    }
+
+    output(result);
+  });
 });
